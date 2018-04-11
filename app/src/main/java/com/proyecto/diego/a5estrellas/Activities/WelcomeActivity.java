@@ -1,7 +1,9 @@
-package com.proyecto.diego.a5estrellas;
+package com.proyecto.diego.a5estrellas.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.proyecto.diego.a5estrellas.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 
