@@ -3,15 +3,19 @@ package com.proyecto.diego.a5estrellas.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.proyecto.diego.a5estrellas.R;
 
 import java.util.EmptyStackException;
@@ -19,7 +23,7 @@ import java.util.EmptyStackException;
 public class LoginActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
-
+    FirebaseAuth.AuthStateListener mAuthlistener;
     Button btnLogin;
     EditText editTextEmail, editTextPass;
 
@@ -31,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
         prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
 
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,11 +43,26 @@ public class LoginActivity extends AppCompatActivity {
                 String password = editTextPass.getText().toString();
 
                 if (login(email, password)) {
-                    goToMainActivity();
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password);
                     saveOnPreferences(email, password);
                 }
+
             }
         });
+
+        mAuthlistener = new FirebaseAuth.AuthStateListener() {
+
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    Log.i("SESION", "iniciada con " + user.getEmail());
+                    goToMainActivity();
+                } else {
+                    Log.i("SESION", "sesion cerrada");
+                }
+            }
+        };
 
     }
 
@@ -102,5 +122,19 @@ public class LoginActivity extends AppCompatActivity {
     }
     private String getUserPassPrefs(){
         return prefs.getString("pass","");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseAuth.getInstance().addAuthStateListener(mAuthlistener); //se inicializa el mAuthlistener
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mAuthlistener != null){
+            FirebaseAuth.getInstance().removeAuthStateListener(mAuthlistener);
+        }
     }
 }
