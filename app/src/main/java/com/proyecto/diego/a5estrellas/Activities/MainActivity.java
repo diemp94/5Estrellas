@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.proyecto.diego.a5estrellas.Adapter.PagerAdapter;
 import com.proyecto.diego.a5estrellas.R;
 
@@ -107,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_logout:
                  logOut();
                  removeSharedPreferences();
+                FirebaseAuth.getInstance().signOut();
                 return true;
             case R.id.menu_ayuda:
 
