@@ -6,4 +6,72 @@
     android:layout_height="match_parent"
     tools:context="com.proyecto.diego.a5estrellas.Activities.RegisterActivity">
 
+    <EditText
+        android:id="@+id/editTextEmailRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="7dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="ejemplo@ejemplo.com"
+        app:layout_constraintStart_toStartOf="@+id/textViewEmailRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailRegistro" />
+
+    <EditText
+        android:id="@+id/editTextPass1Registro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmailRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailRegistro" />
+
+    <EditText
+        android:id="@+id/editTextPass2Registro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/textViewPass2Registro"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPass2Registro" />
+
+    <Button
+        android:id="@+id/buttonRegistro"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="232dp"
+        android:text="Registrate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewEmailRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="47dp"
+        android:text="Introduce tu correo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPass1Registro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contraseña"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPass1Registro"
+        app:layout_constraintStart_toStartOf="@+id/editTextPass1Registro" />
+
+    <TextView
+        android:id="@+id/textViewPass2Registro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repetir Contraseña"
+        app:layout_constraintStart_toStartOf="@+id/editTextPass1Registro"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass1Registro" />
 </android.support.constraint.ConstraintLayout>
