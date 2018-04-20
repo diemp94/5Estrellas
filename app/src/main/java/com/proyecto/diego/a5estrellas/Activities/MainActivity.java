@@ -1,5 +1,7 @@
 package com.proyecto.diego.a5estrellas.Activities;
 
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.content.Context;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         //se implementa el tab_layout
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        //tabLayout.addTab(tabLayout.newTab().setIcon(R.mipmap.ic_launcher));
         tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
         tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
         tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));

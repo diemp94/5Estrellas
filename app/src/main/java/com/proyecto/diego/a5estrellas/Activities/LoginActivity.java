@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.proyecto.diego.a5estrellas.R;
@@ -43,7 +46,14 @@ public class LoginActivity extends AppCompatActivity {
                 String password = editTextPass.getText().toString();
 
                 if (login(email, password)) {
-                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password);
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(!task.isSuccessful()){
+                                Toast.makeText(LoginActivity.this,"Usuario no registrado",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
                     saveOnPreferences(email, password);
                 }
 
@@ -86,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean login(String email, String pass){
         if(!isaValidEmail(email)){
-            Toast.makeText(this,"Email no valido",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Ingresa Email Válido",Toast.LENGTH_LONG).show();
             return false;
         }else if (!isValidPass(pass)){
             Toast.makeText(this,"La contraseña tiene que tener mas de 5 caracteres",Toast.LENGTH_LONG).show();
