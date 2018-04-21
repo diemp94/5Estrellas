@@ -15,7 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.proyecto.diego.a5estrellas.Adapter.AdapterMyMovie;
 import com.proyecto.diego.a5estrellas.Adapter.PagerAdapter;
+import com.proyecto.diego.a5estrellas.Fragments.MyMoviesFragment;
 import com.proyecto.diego.a5estrellas.R;
 
 import java.util.zip.Inflater;

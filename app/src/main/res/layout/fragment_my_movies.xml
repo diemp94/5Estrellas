@@ -5,9 +5,12 @@
     tools:context="com.proyecto.diego.a5estrellas.Fragments.MyMoviesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_myMovies"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Mis películas" />
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
