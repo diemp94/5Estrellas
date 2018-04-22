@@ -36,7 +36,9 @@ public class CatalogFragment extends Fragment {
         mStorage = FirebaseStorage.getInstance(); //Instancias el objeto
         StorageReference storageRef = mStorage.getReference();  //se crea el objeto que obtendra los datos de FB
         StorageReference imagesRef = storageRef.child("peliculas").child("avengers.jpg"); //se obtiene la imagen colocando el nombre que contiene en FB
-        Glide.with(getContext()).using(new FirebaseImageLoader()).load(imagesRef).into(mImageView); //Libreria glide sirve para Cargar la imagen en el imageView
+        StorageReference urlstorage = mStorage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/estrellas-717e5.appspot.com/o/peliculas%2Fthor1.jpg?alt=media&token=efebe5fc-a802-4007-bac2-a64a4a46a179");
+        //Glide.with(getContext()).using(new FirebaseImageLoader()).load(imagesRef).into(mImageView); //Libreria glide sirve para Cargar la imagen en el imageView
+        Glide.with(getContext()).using(new FirebaseImageLoader()).load(urlstorage).into(mImageView);
 
         return view;
     }

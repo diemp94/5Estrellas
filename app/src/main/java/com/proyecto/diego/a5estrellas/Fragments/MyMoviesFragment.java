@@ -68,9 +68,11 @@ public class MyMoviesFragment extends Fragment {
                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                    MyMovies mv = snapshot.getValue(MyMovies.class);
                    if(mv.getNombre()!=null)
-                   Log.i("Pel-name",  mv.getNombre());
+                       Log.i("Pel-name",  mv.getNombre());
                    if(mv.getInfo()!=null)
-                   Log.i("Pel-info",  mv.getInfo());
+                       Log.i("Pel-info",  mv.getInfo());
+                   if(mv.getFoto()!=null)
+                       Log.i("Pel-info",  mv.getFoto());
                    listMyMovies.add(mv);
                }
                Log.i("MOVIE",  dataSnapshot.toString());

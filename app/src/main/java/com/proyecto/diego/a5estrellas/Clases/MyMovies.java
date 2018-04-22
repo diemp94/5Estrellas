@@ -4,14 +4,14 @@ public class MyMovies {
 
     private  String nombre;
     private  String info;
-    //private  int foto;
+    private  String foto;
 
     public MyMovies(){}
 
-    public MyMovies(String nombre, String info /*, int foto*/) {
+    public MyMovies(String nombre, String info , String foto) {
         this.nombre = nombre;
         this.info = info;
-        //this.foto = foto;
+        this.foto = foto;
     }
 
     public String getNombre() {
@@ -30,11 +30,11 @@ public class MyMovies {
         this.info = info;
     }
 
-    /*public int getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(int foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
-    }*/
+    }
 }
