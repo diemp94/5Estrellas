@@ -32,7 +32,10 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
     public void onBindViewHolder(AdapterMyMovie.ViewHolderMyMovie holder, int position) {
         holder.txtNameMyMovie.setText(listMovies.get(position).getNombre());
         holder.txtInfoMyMovie.setText(listMovies.get(position).getInfo());
-        holder.fotoMyMovie.setImageResource(listMovies.get(position).getFoto());
+
+        //SECCION HARDCODEADA PARA PRUEBAS, TIENE QUE AGARRAR LOS VALORES DESDE LA BASE DE DATOS
+        holder.fotoMyMovie.setImageResource(R.mipmap.ic_launcher);
+        //holder.fotoMyMovie.setImageResource(listMovies.get(position).getFoto());
     }
 
     @Override
@@ -41,7 +44,7 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
     }
 
 
-
+    //Se castean los objetos con el UI
     public class ViewHolderMyMovie extends RecyclerView.ViewHolder {
 
         TextView txtNameMyMovie, txtInfoMyMovie;

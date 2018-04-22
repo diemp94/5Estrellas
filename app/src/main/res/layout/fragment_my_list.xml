@@ -4,17 +4,13 @@
     android:layout_height="match_parent"
     tools:context="com.proyecto.diego.a5estrellas.Fragments.MyListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Mi lista" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_myList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/buttonCrear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="crear"
+        />
 
-    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
