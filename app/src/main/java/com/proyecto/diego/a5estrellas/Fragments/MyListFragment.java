@@ -46,7 +46,7 @@ public class MyListFragment extends Fragment {
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyMovies mv = new MyMovies("Avengers","Se reunen todos","https://firebasestorage.googleapis.com/v0/b/estrellas-717e5.appspot.com/o/peliculas%2FNoImage.jpg?alt=media&token=c51c20b5-a378-4c4d-b190-3af51af38732");
+                MyMovies mv = new MyMovies("Avengers","Se reunen todos","https://firebasestorage.googleapis.com/v0/b/estrellas-717e5.appspot.com/o/peliculas%2FNoImage.jpg?alt=media&token=c51c20b5-a378-4c4d-b190-3af51af38732","Info mas detallada");
                 myMoviesRef.child(FirebaseReferences.MOVIES).push().setValue(mv);
             }
         });

@@ -1,6 +1,8 @@
 package com.proyecto.diego.a5estrellas.Fragments;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.proyecto.diego.a5estrellas.Adapter.AdapterMyMovie;
 import com.proyecto.diego.a5estrellas.Clases.FirebaseReferences;
 import com.proyecto.diego.a5estrellas.Clases.MyMovies;
+import com.proyecto.diego.a5estrellas.Interfaces.IComunicaFragments;
 import com.proyecto.diego.a5estrellas.R;
 
 import java.util.ArrayList;
@@ -31,6 +35,10 @@ public class MyMoviesFragment extends Fragment {
     public RecyclerView recyclerViewMovies;
     private RecyclerView.LayoutManager mLayoutManager;
     AdapterMyMovie adapterMyMovie;
+
+    Activity activity;
+    IComunicaFragments interfaceComunicaFragments;
+
     public MyMoviesFragment() {
     }
 
@@ -50,6 +58,25 @@ public class MyMoviesFragment extends Fragment {
         fillMovies();
 
         adapterMyMovie = new AdapterMyMovie(listMyMovies, R.layout.recycler_view_item);
+
+       adapterMyMovie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"Seleccion "+listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(view)).getNombre() ,Toast.LENGTH_SHORT).show();
+
+                interfaceComunicaFragments.sendMovie(listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(view)));
+            }
+        });
+
+        adapterMyMovie.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Log.i("CLICK","presionado");
+                Toast.makeText(getContext(),"Click largo "+listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(view)).getInfo() ,Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
         recyclerViewMovies.setAdapter(adapterMyMovie);
 
         return view;
@@ -73,6 +100,7 @@ public class MyMoviesFragment extends Fragment {
                        Log.i("Pel-info",  mv.getInfo());
                    if(mv.getFoto()!=null)
                        Log.i("Pel-info",  mv.getFoto());
+
                    listMyMovies.add(mv);
                }
                Log.i("MOVIE",  dataSnapshot.toString());
@@ -112,5 +140,15 @@ public class MyMoviesFragment extends Fragment {
         listMyMovies.add(new MyMovies("Avengers 2","En esta pelicula muere el que es rapido",R.mipmap.ic_launcher));*/
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
+        if(context instanceof Activity){
+            this.activity = (Activity) context;
+            interfaceComunicaFragments= (IComunicaFragments) this.activity;
+        }
+
+
+    }
 }

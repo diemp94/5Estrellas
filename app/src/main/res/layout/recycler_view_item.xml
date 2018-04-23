@@ -20,7 +20,6 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
             />
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,13 +38,24 @@
 
             <TextView
                 android:id="@+id/idInfoMyMovie"
-                android:layout_width="wrap_content"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:text="descripcion"
                 android:layout_marginBottom="15dp"
                 android:layout_marginRight="10dp"
                 />
+
         </LinearLayout>
+        <!--
+        <ImageButton
+            android:id="@+id/imageButtonDescripcion"
+            android:src="@android:drawable/ic_menu_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            /> -->
+
     </LinearLayout>
 
     <TextView
