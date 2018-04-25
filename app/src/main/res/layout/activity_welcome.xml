@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/FondoWelcome"
+    android:background="@drawable/fondo_welcome"
     tools:context="com.proyecto.diego.a5estrellas.Activities.WelcomeActivity">
 
     <Button
