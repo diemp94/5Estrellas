@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity  {
         //se implementa el tab_layout
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         //tabLayout.addTab(tabLayout.newTab().setIcon(R.mipmap.ic_launcher));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
+        tabLayout.addTab(tabLayout.newTab().setText("Inicio"));
+        tabLayout.addTab(tabLayout.newTab().setText("Noticias"));
+        tabLayout.addTab(tabLayout.newTab().setText("Mi Lista"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity  {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
                 return false;
             }
         });

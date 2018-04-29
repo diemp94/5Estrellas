@@ -4,39 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.proyecto.diego.a5estrellas.Activities.LoginActivity">
+    android:background="#F3C8E7"
+    tools:context="com.proyecto.diego.a5estrellas.Activities.LoginActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <EditText
         android:id="@+id/editText_email"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="118dp"
+        android:layout_marginBottom="21dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginStart="67dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="ejemplo@ejemplo.com"
         android:inputType="textPersonName"
+        android:textColor="#FFF"
+        app:layout_constraintBottom_toTopOf="@+id/editText_pass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_pass"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="66dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="186dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColor="#FFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editText_pass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginTop="22dp"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editText_email"
-        app:layout_constraintTop_toBottomOf="@+id/editText_email" />
-
     <Button
         android:id="@+id/btn_Login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="191dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginStart="67dp"
+        android:background="@color/colorPrimary"
+        android:text="Iniciar Sesion"
+        android:textColor="#FFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewLoginWarning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="Iniciar Sesion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="12dp"
+        android:textColor="#FD0202"
+        app:layout_constraintStart_toStartOf="@+id/editText_pass"
         app:layout_constraintTop_toBottomOf="@+id/editText_pass" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="49dp"
+        android:text="¿Aún no tienes cuenta?"
+        app:layout_constraintEnd_toStartOf="@+id/textViewGotoRegister"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Login" />
+
+    <TextView
+        android:id="@+id/textViewGotoRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="Registrate"
+        android:textColor="#2009F4"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2" />
 </android.support.constraint.ConstraintLayout>

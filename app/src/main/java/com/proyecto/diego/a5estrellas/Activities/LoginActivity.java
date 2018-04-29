@@ -12,6 +12,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,9 +27,11 @@ import java.util.EmptyStackException;
 public class LoginActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
+    String userFireBaseVerification;
     FirebaseAuth.AuthStateListener mAuthlistener;
     Button btnLogin;
     EditText editTextEmail, editTextPass;
+    TextView txtViewGoToRegister, txtViewLoginWarning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +48,14 @@ public class LoginActivity extends AppCompatActivity {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPass.getText().toString();
 
+
                 if (login(email, password)) {
                     FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
-                                Toast.makeText(LoginActivity.this,"Usuario no registrado",Toast.LENGTH_LONG).show();
+                                txtViewLoginWarning.setText("Contraseña Incorrecta");
+                                //Toast.makeText(LoginActivity.this,"Usuario no registrado",Toast.LENGTH_LONG).show();
                             }
                         }
                     });
@@ -74,6 +79,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
+        txtViewGoToRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentGoToRegister = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intentGoToRegister);
+            }
+        });
+
     }
 
 
@@ -81,6 +94,9 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btn_Login);
         editTextEmail = (EditText) findViewById(R.id.editText_email);
         editTextPass = (EditText) findViewById(R.id.editText_pass);
+        txtViewGoToRegister = (TextView) findViewById(R.id.textViewGotoRegister);
+        txtViewLoginWarning = (TextView) findViewById(R.id.textViewLoginWarning);
+
     }
 
     //Este metodo aun no se implementa
@@ -99,7 +115,8 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this,"Ingresa Email Válido",Toast.LENGTH_LONG).show();
             return false;
         }else if (!isValidPass(pass)){
-            Toast.makeText(this,"La contraseña tiene que tener mas de 5 caracteres",Toast.LENGTH_LONG).show();
+            txtViewLoginWarning.setText("La contraseña tiene que tener mas de 5 caracteres");
+            //Toast.makeText(this,"La contraseña tiene que tener mas de 5 caracteres",Toast.LENGTH_LONG).show();
             return false;
         }else {
             return true;
