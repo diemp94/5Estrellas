@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,7 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.proyecto.diego.a5estrellas.Adapter.AdapterMyMovie;
 import com.proyecto.diego.a5estrellas.Clases.FirebaseReferences;
 import com.proyecto.diego.a5estrellas.Clases.MyMovies;
-import com.proyecto.diego.a5estrellas.Interfaces.IComunicaFragments;
 import com.proyecto.diego.a5estrellas.R;
 
 import java.util.ArrayList;
@@ -35,9 +33,6 @@ public class MyMoviesFragment extends Fragment {
     public RecyclerView recyclerViewMovies;
     private RecyclerView.LayoutManager mLayoutManager;
     AdapterMyMovie adapterMyMovie;
-
-    Activity activity;
-    IComunicaFragments interfaceComunicaFragments;
 
     public MyMoviesFragment() {
     }
@@ -64,7 +59,6 @@ public class MyMoviesFragment extends Fragment {
             public void onClick(View view) {
                 Toast.makeText(getContext(),"Seleccion "+listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(view)).getNombre() ,Toast.LENGTH_SHORT).show();
 
-                interfaceComunicaFragments.sendMovie(listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(view)));
             }
         });
 
@@ -138,17 +132,5 @@ public class MyMoviesFragment extends Fragment {
         listMyMovies.add(new MyMovies("Thor 3","Es el ragnarok y sale hulk",R.mipmap.ic_launcher));
         listMyMovies.add(new MyMovies("Avengers","primera union de todos los heroes",R.mipmap.ic_launcher));
         listMyMovies.add(new MyMovies("Avengers 2","En esta pelicula muere el que es rapido",R.mipmap.ic_launcher));*/
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        if(context instanceof Activity){
-            this.activity = (Activity) context;
-            interfaceComunicaFragments= (IComunicaFragments) this.activity;
-        }
-
-
     }
 }

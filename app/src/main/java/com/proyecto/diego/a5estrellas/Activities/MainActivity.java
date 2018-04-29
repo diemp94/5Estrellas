@@ -1,7 +1,5 @@
 package com.proyecto.diego.a5estrellas.Activities;
 
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Icon;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.content.Context;
@@ -15,20 +13,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.proyecto.diego.a5estrellas.Adapter.AdapterMyMovie;
 import com.proyecto.diego.a5estrellas.Adapter.PagerAdapter;
 import com.proyecto.diego.a5estrellas.Clases.MyMovies;
-import com.proyecto.diego.a5estrellas.Fragments.DetailsFragment;
-import com.proyecto.diego.a5estrellas.Fragments.MyMoviesFragment;
-import com.proyecto.diego.a5estrellas.Interfaces.IComunicaFragments;
 import com.proyecto.diego.a5estrellas.R;
 
 import java.util.zip.Inflater;
 
-public class MainActivity extends AppCompatActivity implements IComunicaFragments {
+public class MainActivity extends AppCompatActivity  {
 
     private SharedPreferences prefs;
-    DetailsFragment detailsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,19 +126,5 @@ public class MainActivity extends AppCompatActivity implements IComunicaFragment
     }
     private void removeSharedPreferences(){
         prefs.edit().clear().apply();
-    }
-
-
-
-    //METODO DEL IMPLEMENTS IComunicaFragmemts
-    @Override
-    public void sendMovie(MyMovies movies) {
-        detailsFragment = new DetailsFragment();
-        Bundle  bundleEnvio = new Bundle();
-        bundleEnvio.putSerializable("objeto",movies);
-        detailsFragment.setArguments(bundleEnvio);
-
-        //cargar el fragment en el activity
-        getSupportFragmentManager().beginTransaction().replace(R.id.contenedorFragment,detailsFragment).addToBackStack(null).commit();
     }
 }
