@@ -6,4 +6,50 @@
     android:layout_height="match_parent"
     tools:context="com.proyecto.diego.a5estrellas.Activities.DescriptionActivity">
 
+    <ImageView
+        android:id="@+id/imageViewDescription"
+        android:layout_width="0dp"
+        android:layout_height="325dp"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewNameDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewNameDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewClasification"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDescription" />
+
+    <TextView
+        android:id="@+id/textViewClasification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNameDescription" />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="194dp"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewClasification" />
+
+
 </android.support.constraint.ConstraintLayout>

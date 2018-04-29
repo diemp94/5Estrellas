@@ -3,6 +3,7 @@ package com.proyecto.diego.a5estrellas.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.proyecto.diego.a5estrellas.Activities.DescriptionActivity;
 import com.proyecto.diego.a5estrellas.Adapter.AdapterMyMovie;
 import com.proyecto.diego.a5estrellas.Clases.FirebaseReferences;
 import com.proyecto.diego.a5estrellas.Clases.MyMovies;
@@ -58,7 +60,9 @@ public class MyMoviesFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),"Seleccion "+listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(view)).getNombre() ,Toast.LENGTH_SHORT).show();
-
+                Intent intentDescription = new Intent(getContext(), DescriptionActivity.class);
+                intentDescription.putExtra("description",listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(view)));
+                startActivity(intentDescription);
             }
         });
 
