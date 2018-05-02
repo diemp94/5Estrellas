@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.proyecto.diego.a5estrellas.Activities.RegisterActivity">
+    android:background="#F3C8E7"
+    tools:context="com.proyecto.diego.a5estrellas.Activities.RegisterActivity"
+    tools:layout_editor_absoluteY="25dp">
 
     <EditText
         android:id="@+id/editTextEmailRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="ejemplo@ejemplo.com"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/textViewEmailRegistro"
         app:layout_constraintTop_toBottomOf="@+id/textViewEmailRegistro" />
 
@@ -22,7 +23,7 @@
         android:id="@+id/editTextPass1Registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/editTextEmailRegistro"
@@ -32,37 +33,39 @@
         android:id="@+id/editTextPass2Registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="13dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/textViewPass2Registro"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPass2Registro" />
+        app:layout_constraintStart_toStartOf="@+id/editTextPass1Registro"
+        app:layout_constraintTop_toTopOf="@+id/textViewPass2Registro" />
 
     <Button
         android:id="@+id/buttonRegistro"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="232dp"
+        android:layout_marginTop="23dp"
+        android:background="@color/colorPrimary"
         android:text="Registrate"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#FFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass2Registro" />
 
     <TextView
         android:id="@+id/textViewEmailRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="2dp"
         android:text="Introduce tu correo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/editTextUserRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserRegistro" />
 
     <TextView
         android:id="@+id/textViewPass1Registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
         android:text="Contraseña"
         app:layout_constraintBottom_toTopOf="@+id/editTextPass1Registro"
         app:layout_constraintStart_toStartOf="@+id/editTextPass1Registro" />
@@ -71,7 +74,29 @@
         android:id="@+id/textViewPass2Registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Repetir Contraseña"
-        app:layout_constraintStart_toStartOf="@+id/editTextPass1Registro"
+        app:layout_constraintStart_toStartOf="@+id/editTextPass2Registro"
         app:layout_constraintTop_toBottomOf="@+id/editTextPass1Registro" />
+
+    <TextView
+        android:id="@+id/textViewUserRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="52dp"
+        android:text="Nombre"
+        app:layout_constraintStart_toStartOf="@+id/editTextUserRegistro"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextUserRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="usuario"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserRegistro" />
 </android.support.constraint.ConstraintLayout>

@@ -59,7 +59,7 @@ public class MyMoviesFragment extends Fragment {
        adapterMyMovie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(),"Seleccion "+listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(view)).getNombre() ,Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(),"Seleccion "+listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(view)).getNombre() ,Toast.LENGTH_SHORT).show();
                 Intent intentDescription = new Intent(getContext(), DescriptionActivity.class);
                 intentDescription.putExtra("description",listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(view)));
                 startActivity(intentDescription);
