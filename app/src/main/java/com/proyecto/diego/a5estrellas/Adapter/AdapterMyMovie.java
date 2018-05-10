@@ -15,6 +15,7 @@ import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.proyecto.diego.a5estrellas.Activities.MainActivity;
+import com.proyecto.diego.a5estrellas.Clases.ItemLongClickListener;
 import com.proyecto.diego.a5estrellas.Clases.MyMovies;
 import com.proyecto.diego.a5estrellas.Fragments.MyMoviesFragment;
 import com.proyecto.diego.a5estrellas.R;
@@ -33,6 +34,9 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
     private View.OnClickListener listener;
     private View.OnLongClickListener longListener;
 
+    //INTERFACE
+    ItemLongClickListener itemLongClickListener;
+
     public AdapterMyMovie(ArrayList<MyMovies> listMovies, int layout) {
         this.listMovies = listMovies;
         this.layout = layout;
@@ -44,6 +48,7 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
 
 
         view.setOnClickListener(this);
+        view.setOnLongClickListener(this);
 
         return new ViewHolderMyMovie(view);
     }
@@ -61,6 +66,7 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
         //SECCION HARDCODEADA PARA PRUEBAS
         //holder.fotoMyMovie.setImageResource(R.mipmap.ic_launcher);
         //holder.fotoMyMovie.setImageResource(listMovies.get(position).getFoto());
+
     }
 
     @Override
@@ -87,8 +93,9 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
     //el metodo lo exige el IMPLEMENT
     @Override
     public boolean onLongClick(View view) {
-        longListener.onLongClick(view);
-        Toast.makeText(view.getContext(),"Click largo ",Toast.LENGTH_SHORT).show();
+        this.itemLongClickListener.OnItemLongCLick(view, getItemCount());
+        //longListener.onLongClick(view);
+        //Toast.makeText(view.getContext(),"Click largo ",Toast.LENGTH_SHORT).show();
         return false;
 
     }
@@ -123,5 +130,8 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
         }
     }
 
+    public void setItemLongClickListener(ItemLongClickListener itemLongClickListener){
+        this.itemLongClickListener = itemLongClickListener;
+    }
 
 }

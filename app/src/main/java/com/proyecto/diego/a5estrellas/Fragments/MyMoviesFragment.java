@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.proyecto.diego.a5estrellas.Activities.DescriptionActivity;
 import com.proyecto.diego.a5estrellas.Adapter.AdapterMyMovie;
 import com.proyecto.diego.a5estrellas.Clases.FirebaseReferences;
+import com.proyecto.diego.a5estrellas.Clases.ItemLongClickListener;
 import com.proyecto.diego.a5estrellas.Clases.MyMovies;
 import com.proyecto.diego.a5estrellas.R;
 
@@ -66,14 +67,12 @@ public class MyMoviesFragment extends Fragment {
             }
         });
 
-        adapterMyMovie.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                Log.i("CLICK","presionado");
-                Toast.makeText(getContext(),"Click largo "+listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(view)).getInfo() ,Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
+       adapterMyMovie.setItemLongClickListener(new ItemLongClickListener() {
+           @Override
+           public void OnItemLongCLick(View v, int position) {
+               Toast.makeText(getContext(),"Click largo "+listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(v)).getInfo() ,Toast.LENGTH_SHORT).show();
+           }
+       });
 
         recyclerViewMovies.setAdapter(adapterMyMovie);
 
@@ -112,22 +111,6 @@ public class MyMoviesFragment extends Fragment {
            }
        });
 
-       /* database.getReference() .addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                listMyMovies.removeAll(listMyMovies);
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                       MyMovies mv = snapshot.getValue(MyMovies.class);
-                       listMyMovies.add(mv);
-                }
-                adapterMyMovie.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
 
 
         //Se rellena con esto si se quieren hacer pruebas
