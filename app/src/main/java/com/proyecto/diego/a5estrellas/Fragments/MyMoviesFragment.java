@@ -10,8 +10,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -46,6 +50,8 @@ public class MyMoviesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_my_movies, container, false);;
+        setHasOptionsMenu(true); //Indispensable para que muestre el icono del menu en dicho fragment
+
 
         recyclerViewMovies = (RecyclerView) view.findViewById(R.id.recycler_myMovies);
         listMyMovies = new ArrayList<>();
@@ -76,7 +82,35 @@ public class MyMoviesFragment extends Fragment {
 
         recyclerViewMovies.setAdapter(adapterMyMovie);
 
+
         return view;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        //SearchView
+        // Video de ayuda: https://www.youtube.com/watch?v=hoEY2n8CCSk
+        inflater.inflate(R.menu.menu_search, menu);
+        MenuItem menusearch = menu.findItem(R.id.menuSearch); //objeto que se encuentra en menu_search
+        SearchView searchView = (SearchView) menusearch.getActionView(); //se instancia un search view para las busquedas
+
+        //se establecen los metodos del SearchView
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapterMyMovie.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapterMyMovie.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     //Rellena los datos
@@ -91,13 +125,6 @@ public class MyMoviesFragment extends Fragment {
                //Ciclo For que recorre toda la base de datos
                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                    MyMovies mv = snapshot.getValue(MyMovies.class);
-                   if(mv.getNombre()!=null)
-                       Log.i("Pel-name",  mv.getNombre());
-                   if(mv.getInfo()!=null)
-                       Log.i("Pel-info",  mv.getInfo());
-                   if(mv.getFoto()!=null)
-                       Log.i("Pel-info",  mv.getFoto());
-
                    listMyMovies.add(mv);
                }
                Log.i("MOVIE",  dataSnapshot.toString());

@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity  {
         //SearchView
         // Video de ayuda: https://www.youtube.com/watch?v=hoEY2n8CCSk
 
-        getMenuInflater().inflate(R.menu.menu_search, menu);
+ /*       getMenuInflater().inflate(R.menu.menu_search, menu);
         MenuItem menusearch = menu.findItem(R.id.menuSearch); //objeto que se encuentra en menu_search
         SearchView searchView = (SearchView) menusearch.getActionView(); //se instancia un search view para las busquedas
 
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity  {
                 return false;
             }
         });
-
+*/      
         return super.onCreateOptionsMenu(menu);
     }
 
