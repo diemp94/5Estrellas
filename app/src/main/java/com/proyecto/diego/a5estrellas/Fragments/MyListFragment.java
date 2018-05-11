@@ -9,9 +9,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +59,8 @@ public class MyListFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewList.setLayoutManager(mLayoutManager);
 
+        setHasOptionsMenu(true); //Indispensable para que muestre el icono del menu en dicho fragment
+
         fillMovies();
         adapterMyMovieList = new AdapterMyMovie(listMyMoviesList, R.layout.recycler_view_item);
 
@@ -73,6 +79,32 @@ public class MyListFragment extends Fragment {
         final DatabaseReference myMoviesRef  = database.getReference(FirebaseReferences.MY_MOVIES);
         recyclerViewList.setAdapter(adapterMyMovieList);
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        //SearchView
+        // Video de ayuda: https://www.youtube.com/watch?v=hoEY2n8CCSk
+        inflater.inflate(R.menu.menu_search, menu);
+        MenuItem menusearch = menu.findItem(R.id.menuSearch); //objeto que se encuentra en menu_search
+        SearchView searchView = (SearchView) menusearch.getActionView(); //se instancia un search view para las busquedas
+
+        //se establecen los metodos del SearchView
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                adapterMyMovieList.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapterMyMovieList.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
 

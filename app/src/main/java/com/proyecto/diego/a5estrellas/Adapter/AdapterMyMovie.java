@@ -134,7 +134,6 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
         this.itemLongClickListener = itemLongClickListener;
     }
 
-    //@Override
     public Filter getFilter() {
         return new Filter() {
 

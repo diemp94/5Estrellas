@@ -51,8 +51,6 @@ public class MyMoviesFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_my_movies, container, false);;
         setHasOptionsMenu(true); //Indispensable para que muestre el icono del menu en dicho fragment
-
-
         recyclerViewMovies = (RecyclerView) view.findViewById(R.id.recycler_myMovies);
         listMyMovies = new ArrayList<>();
         mLayoutManager = new LinearLayoutManager(getContext());
