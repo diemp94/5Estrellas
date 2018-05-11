@@ -1,10 +1,14 @@
 package com.proyecto.diego.a5estrellas.Activities;
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +37,7 @@ public class DescriptionActivity extends AppCompatActivity {
     FirebaseStorage mStorage; //Crea un objeto que hace referencia a la base de datos de FB
     ImageView imageViewDescription;
     TextView txtViewNameDescription, txtViewDescription, txtViewClasification;
+    ImageButton imageButtonYT;
     Button btnAddToMyList;
     MyMovies mv;
     public ArrayList<MyMovies> listMyMoviesList;
@@ -68,6 +73,21 @@ public class DescriptionActivity extends AppCompatActivity {
                     Toast.makeText(DescriptionActivity.this,"Agregada a tu lista",Toast.LENGTH_SHORT).show();
                     myMoviesRef.child(FirebaseReferences.USERS).child(currentUser.getUid()).child("MiLista").push().setValue(mv);
                 }
+            }
+        });
+
+        imageButtonYT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" +"eOrNdBpGMv8" ));
+                Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://www.youtube.com/watch?v=" + "eOrNdBpGMv8"));
+                try {
+                    startActivity(appIntent);
+                } catch (ActivityNotFoundException ex) {
+                        startActivity(webIntent);
+                    }
+
             }
         });
 
@@ -109,5 +129,6 @@ public class DescriptionActivity extends AppCompatActivity {
         txtViewDescription = (TextView) findViewById(R.id.textViewDescription);
         txtViewClasification = (TextView) findViewById(R.id.textViewClasification);
         btnAddToMyList = (Button) findViewById(R.id.buttonDescripcionAgregarAMiLista);
+        imageButtonYT = (ImageButton) findViewById(R.id.imageButtonYouTubeTrailer);
     }
 }

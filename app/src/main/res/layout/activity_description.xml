@@ -1,71 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.proyecto.diego.a5estrellas.Activities.DescriptionActivity">
-
-    <ImageView
-        android:id="@+id/imageViewDescription"
-        android:layout_width="0dp"
-        android:layout_height="325dp"
-        android:scaleType="centerCrop"
-        android:background="#7F7979"
-        android:layout_marginBottom="13dp"
-        android:elevation="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewNameDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewNameDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewClasification"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewDescription" />
-
-    <TextView
-        android:id="@+id/textViewClasification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/textViewDescription"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNameDescription" />
-
-    <TextView
-        android:id="@+id/textViewDescription"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewClasification" />
-
-    <Button
-        android:id="@+id/buttonDescripcionAgregarAMiLista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
-        android:text="Agregar a mi lista"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
-        app:layout_constraintVertical_bias="0.346"
-        tools:ignore="MissingConstraints" />
+    tools:context="com.proyecto.diego.a5estrellas.Activities.DescriptionActivity"
+    tools:layout_editor_absoluteY="25dp">
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageViewDescription"
+                android:layout_width="0dp"
+                android:layout_height="325dp"
+                android:layout_marginBottom="13dp"
+                android:background="#7F7979"
+                android:elevation="4dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@+id/textViewNameDescription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageButton
+                android:id="@+id/imageButtonYouTubeTrailer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:elevation="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewDescription"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewDescription"
+                app:layout_constraintStart_toStartOf="@+id/imageViewDescription"
+                app:layout_constraintTop_toTopOf="@+id/imageViewDescription"
+                app:srcCompat="@android:drawable/ic_media_play" />
+
+            <TextView
+                android:id="@+id/textViewNameDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="16dp"
+                android:text="TextView"
+                android:textSize="30dp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewClasification"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewDescription" />
+
+            <TextView
+                android:id="@+id/textViewClasification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="5sp"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/textViewDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNameDescription" />
+
+            <TextView
+                android:id="@+id/textViewDescription"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="8sp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewClasification" />
+
+            <Button
+                android:id="@+id/buttonDescripcionAgregarAMiLista"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="108dp"
+                android:text="Agregar a mi lista"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="507dp" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
