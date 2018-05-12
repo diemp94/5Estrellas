@@ -42,13 +42,14 @@ public class DescriptionActivity extends AppCompatActivity {
     MyMovies mv;
     public ArrayList<MyMovies> listMyMoviesList;
     public boolean movieOnMyList;
+    public int numberOfMovies=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
         bindUI();
-        mv = (MyMovies) getIntent().getExtras().getSerializable("description");
+        mv = (MyMovies) getIntent().getExtras().getSerializable("description"); //Se le pasa el objeto desde el recyclerview de los fragments
         listMyMoviesList = new ArrayList<>();
         movieOnMyList = false;
         fillMovies(mv);
@@ -71,7 +72,7 @@ public class DescriptionActivity extends AppCompatActivity {
                     Toast.makeText(DescriptionActivity.this,"Ya se encuentra en tu lista",Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(DescriptionActivity.this,"Agregada a tu lista",Toast.LENGTH_SHORT).show();
-                    myMoviesRef.child(FirebaseReferences.USERS).child(currentUser.getUid()).child("MiLista").push().setValue(mv);
+                    myMoviesRef.child(FirebaseReferences.USERS).child(currentUser.getUid()).child("MiLista" ).push().setValue(mv);
                 }
             }
         });
@@ -79,9 +80,9 @@ public class DescriptionActivity extends AppCompatActivity {
         imageButtonYT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" +"eOrNdBpGMv8" ));
+                Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" +mv.getTrailer() ));
                 Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("http://www.youtube.com/watch?v=" + "eOrNdBpGMv8"));
+                        Uri.parse("http://www.youtube.com/watch?v=" + mv.getTrailer()));
                 try {
                     startActivity(appIntent);
                 } catch (ActivityNotFoundException ex) {
@@ -106,9 +107,9 @@ public class DescriptionActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     MyMovies mvfill = snapshot.getValue(MyMovies.class);
                     listMyMoviesList.add(mvfill);
-                    Log.i("mv ",mv.getNombre());
-                    Log.i("mv fill",mvfill.getNombre());
-                    Log.i("mv final", String.valueOf(mv.getNombre().equals(mvfill.getNombre())));
+                    //Log.i("mv ",mv.getNombre());
+                    //Log.i("mv fill",mvfill.getNombre());
+                    //Log.i("mv final", String.valueOf(mv.getNombre().equals(mvfill.getNombre())));
                     //Log.i("mv final", String.valueOf(mv.getFoto().toString().matches(mvfill.getFoto().toString())));
                     if(mvfill.getFoto().equals(mv.getFoto())){
                         movieOnMyList = true;

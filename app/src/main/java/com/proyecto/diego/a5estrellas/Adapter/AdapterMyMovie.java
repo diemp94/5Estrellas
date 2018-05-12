@@ -53,6 +53,7 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
         view.setOnClickListener(this);
         view.setOnLongClickListener(this);
 
+
         return new ViewHolderMyMovie(view);
     }
 
@@ -69,6 +70,7 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
         //SECCION HARDCODEADA PARA PRUEBAS
         //holder.fotoMyMovie.setImageResource(R.mipmap.ic_launcher);
         //holder.fotoMyMovie.setImageResource(listMovies.get(position).getFoto());
+
 
     }
 
@@ -97,10 +99,9 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
     @Override
     public boolean onLongClick(View view) {
         this.itemLongClickListener.OnItemLongCLick(view, getItemCount());
+
         return false;
-
     }
-
 
     //Se castean los objetos con el UI
     public class ViewHolderMyMovie extends RecyclerView.ViewHolder {

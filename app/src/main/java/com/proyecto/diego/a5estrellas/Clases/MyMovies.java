@@ -8,13 +8,16 @@ public class MyMovies implements Serializable {
     private  String info;
     private  String foto;
     private  String infoDetalle;
+    private String trailer;
+
     public MyMovies(){}
 
-    public MyMovies(String nombre, String info , String foto, String infoDetalle) {
+    public MyMovies(String nombre, String info , String foto, String infoDetalle, String trialer) {
         this.nombre = nombre;
         this.info = info;
         this.foto = foto;
         this.infoDetalle = infoDetalle;
+        this.trailer = trailer;
     }
 
     public String getNombre() {
@@ -48,4 +51,8 @@ public class MyMovies implements Serializable {
     public void setInfoDetalle(String infoDetalle) {
         this.infoDetalle = infoDetalle;
     }
+
+    public String getTrailer() { return trailer; }
+
+    public void setTrailer(String trailer) { this.trailer = trailer; }
 }
