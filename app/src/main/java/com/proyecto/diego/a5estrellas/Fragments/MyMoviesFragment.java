@@ -2,7 +2,9 @@ package com.proyecto.diego.a5estrellas.Fragments;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -23,7 +26,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.proyecto.diego.a5estrellas.Activities.CalificationDialog;
 import com.proyecto.diego.a5estrellas.Activities.DescriptionActivity;
+import com.proyecto.diego.a5estrellas.Activities.MainActivity;
 import com.proyecto.diego.a5estrellas.Adapter.AdapterMyMovie;
 import com.proyecto.diego.a5estrellas.Clases.FirebaseReferences;
 import com.proyecto.diego.a5estrellas.Clases.ItemLongClickListener;
@@ -40,6 +45,8 @@ public class MyMoviesFragment extends Fragment {
     public RecyclerView recyclerViewMovies;
     private RecyclerView.LayoutManager mLayoutManager;
     AdapterMyMovie adapterMyMovie;
+    EditText editTextCalification;
+    Float calificationUser;
 
     public MyMoviesFragment() {
     }
@@ -56,7 +63,6 @@ public class MyMoviesFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getContext());
         //recyclerViewMovies.setLayoutManager(new LinearLayoutManager(getContext()));
        recyclerViewMovies.setLayoutManager(mLayoutManager);
-
         fillMovies();
 
         adapterMyMovie = new AdapterMyMovie(listMyMovies, R.layout.recycler_view_item);
@@ -74,7 +80,41 @@ public class MyMoviesFragment extends Fragment {
        adapterMyMovie.setItemLongClickListener(new ItemLongClickListener() {
            @Override
            public void OnItemLongCLick(View v, int position) {
-               Toast.makeText(getContext(),"Click largo "+listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(v)).getInfo() ,Toast.LENGTH_SHORT).show();
+
+               // ALERT DIALOG
+               String movieName = listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(v)).getNombre() ;
+
+               final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+               LayoutInflater inflater = MyMoviesFragment.this.getLayoutInflater();
+               View mView =inflater.inflate(R.layout.calificacion_dialog,null);
+               editTextCalification = (EditText)  mView.findViewById(R.id.editTextCalification);
+               builder.setView(getActivity().getLayoutInflater().inflate(R.layout.calificacion_dialog,null))
+                       .setTitle("Calificar "+ movieName)
+                       .setPositiveButton("Calificar", new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialogInterface, int i) {
+                               String cadena = editTextCalification.getText().toString();
+                               if (!cadena.isEmpty()){
+                                   calificationUser = Float.parseFloat(cadena);
+                                   if (calificationUser > 10){
+                                       Toast.makeText(getContext(),"Calificación no valida",Toast.LENGTH_SHORT).show();
+                                   }else {
+                                       Toast.makeText(getContext(),"Calificación de: "+calificationUser,Toast.LENGTH_SHORT).show();
+                                   }
+                               }else{
+                                   Toast.makeText(getContext(),"Cadena vacia",Toast.LENGTH_SHORT).show();
+                               }
+
+                           }
+                       })
+                       .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialogInterface, int i) {
+
+                           }
+                       });
+               AlertDialog alert = builder.create();
+               alert.show();
            }
        });
 
