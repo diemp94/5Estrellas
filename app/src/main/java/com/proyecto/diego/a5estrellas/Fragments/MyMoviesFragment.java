@@ -61,6 +61,10 @@ public class MyMoviesFragment extends Fragment {
         recyclerViewMovies = (RecyclerView) view.findViewById(R.id.recycler_myMovies);
         listMyMovies = new ArrayList<>();
         mLayoutManager = new LinearLayoutManager(getContext());
+
+        final View mView =inflater.inflate(R.layout.calificacion_dialog,null);
+        editTextCalification = (EditText)  mView.findViewById(R.id.editTextCalification);
+
         //recyclerViewMovies.setLayoutManager(new LinearLayoutManager(getContext()));
        recyclerViewMovies.setLayoutManager(mLayoutManager);
         fillMovies();
@@ -86,9 +90,8 @@ public class MyMoviesFragment extends Fragment {
 
                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                LayoutInflater inflater = MyMoviesFragment.this.getLayoutInflater();
-               View mView =inflater.inflate(R.layout.calificacion_dialog,null);
-               editTextCalification = (EditText)  mView.findViewById(R.id.editTextCalification);
-               builder.setView(getActivity().getLayoutInflater().inflate(R.layout.calificacion_dialog,null))
+
+               builder.setView(mView)
                        .setTitle("Calificar "+ movieName)
                        .setPositiveButton("Calificar", new DialogInterface.OnClickListener() {
                            @Override
@@ -113,6 +116,8 @@ public class MyMoviesFragment extends Fragment {
 
                            }
                        });
+               if(mView.getParent() !=null)
+                   ((ViewGroup)mView.getParent()).removeView(mView);
                AlertDialog alert = builder.create();
                alert.show();
            }
