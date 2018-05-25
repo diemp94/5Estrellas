@@ -108,6 +108,7 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
 
         TextView txtNameMyMovie, txtInfoMyMovie;
         ImageView fotoMyMovie;
+        TextView txtCalification;
         ImageButton btnDescripcion;
 
         public ViewHolderMyMovie(View itemView) {
@@ -115,19 +116,7 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
             txtNameMyMovie = (TextView) itemView.findViewById(R.id.idNameMyMovie);
             txtInfoMyMovie = (TextView) itemView.findViewById(R.id.idInfoMyMovie);
             fotoMyMovie = (ImageView) itemView.findViewById(R.id.idImageMyMovie);
-
-
-           /* btnDescripcion = (ImageButton) itemView.findViewById(R.id.imageButtonDescripcion);
-
-            btnDescripcion.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    if(position != RecyclerView.NO_POSITION){
-                        Toast.makeText(view.getContext(),"Presionado"+position,Toast.LENGTH_SHORT);
-                    }
-                }
-            });*/
+            txtCalification = (TextView) itemView.findViewById(R.id.idCalification);
 
         }
     }

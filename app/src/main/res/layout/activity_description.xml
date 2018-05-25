@@ -8,88 +8,99 @@
     tools:context="com.proyecto.diego.a5estrellas.Activities.DescriptionActivity"
     tools:layout_editor_absoluteY="25dp">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imageViewDescription"
-                android:layout_width="0dp"
-                android:layout_height="325dp"
-                android:layout_marginBottom="13dp"
-                android:background="#7F7979"
-                android:elevation="4dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toTopOf="@+id/textViewNameDescription"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageViewDescription"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="13dp"
+            android:background="#7F7979"
+            android:elevation="4dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/textViewNameDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-            <ImageButton
-                android:id="@+id/imageButtonYouTubeTrailer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:elevation="5dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewDescription"
-                app:layout_constraintEnd_toEndOf="@+id/imageViewDescription"
-                app:layout_constraintStart_toStartOf="@+id/imageViewDescription"
-                app:layout_constraintTop_toTopOf="@+id/imageViewDescription"
-                app:srcCompat="@android:drawable/ic_media_play" />
+        <ImageButton
+            android:id="@+id/imageButtonYouTubeTrailer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageViewDescription"
+            app:srcCompat="@android:drawable/ic_media_play" />
 
-            <TextView
-                android:id="@+id/textViewNameDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginStart="16dp"
-                android:text="TextView"
-                android:textSize="30dp"
-                app:layout_constraintBottom_toTopOf="@+id/textViewClasification"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewDescription" />
+        <TextView
+            android:id="@+id/textViewNameDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="188dp"
+            android:layout_marginStart="16dp"
+            android:text="TextView"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/textViewClasification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="5sp"
-                android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/textViewDescription"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNameDescription" />
+        <TextView
+            android:id="@+id/textViewCalification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:elevation="5dp"
+            android:text="6.2"
+            android:textColor="#9B7606"
+            android:textSize="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="22dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNameDescription">
 
             <TextView
                 android:id="@+id/textViewDescription"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="8sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="TextView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewClasification" />
+                tools:layout_editor_absoluteX="17dp"
+                tools:layout_editor_absoluteY="386dp" />
 
-            <Button
-                android:id="@+id/buttonDescripcionAgregarAMiLista"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="108dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Agregar a mi lista"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
-                tools:ignore="MissingConstraints" />
 
-        </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+
+        <ImageButton
+            android:id="@+id/buttonDescripcionAgregarAMiLista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:elevation="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

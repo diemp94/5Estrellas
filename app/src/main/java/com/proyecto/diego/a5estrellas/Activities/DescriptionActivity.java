@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -26,7 +25,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.proyecto.diego.a5estrellas.Clases.FirebaseReferences;
 import com.proyecto.diego.a5estrellas.Clases.MyMovies;
-import com.proyecto.diego.a5estrellas.Fragments.MyListFragment;
 import com.proyecto.diego.a5estrellas.R;
 
 import java.util.ArrayList;
@@ -37,8 +35,7 @@ public class DescriptionActivity extends AppCompatActivity {
     FirebaseStorage mStorage; //Crea un objeto que hace referencia a la base de datos de FB
     ImageView imageViewDescription;
     TextView txtViewNameDescription, txtViewDescription, txtViewClasification;
-    ImageButton imageButtonYT;
-    Button btnAddToMyList;
+    ImageButton imageButtonYT, btnAddToMyList;
     MyMovies mv;
     public ArrayList<MyMovies> listMyMoviesList;
     public boolean movieOnMyList;
@@ -128,8 +125,8 @@ public class DescriptionActivity extends AppCompatActivity {
         imageViewDescription = (ImageView) findViewById(R.id.imageViewDescription);
         txtViewNameDescription = (TextView) findViewById(R.id.textViewNameDescription);
         txtViewDescription = (TextView) findViewById(R.id.textViewDescription);
-        txtViewClasification = (TextView) findViewById(R.id.textViewClasification);
-        btnAddToMyList = (Button) findViewById(R.id.buttonDescripcionAgregarAMiLista);
+        txtViewClasification = (TextView) findViewById(R.id.textViewCalification);
+        btnAddToMyList = (ImageButton) findViewById(R.id.buttonDescripcionAgregarAMiLista);
         imageButtonYT = (ImageButton) findViewById(R.id.imageButtonYouTubeTrailer);
     }
 }
