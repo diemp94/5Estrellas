@@ -64,9 +64,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorPrimary"
+        android:background="#E2E2E2"
         android:layout_below="@+id/idImageMyMovie"
         android:layout_marginTop="11dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         />
 
 </LinearLayout>

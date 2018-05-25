@@ -21,6 +21,8 @@ import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,12 +53,11 @@ public class MyMoviesFragment extends Fragment {
     public MyMoviesFragment() {
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_my_movies, container, false);;
+        View view = inflater.inflate(R.layout.fragment_my_movies, container, false);
         setHasOptionsMenu(true); //Indispensable para que muestre el icono del menu en dicho fragment
         recyclerViewMovies = (RecyclerView) view.findViewById(R.id.recycler_myMovies);
         listMyMovies = new ArrayList<>();
@@ -65,7 +66,10 @@ public class MyMoviesFragment extends Fragment {
         final View mView =inflater.inflate(R.layout.calificacion_dialog,null);
         editTextCalification = (EditText)  mView.findViewById(R.id.editTextCalification);
 
-        //recyclerViewMovies.setLayoutManager(new LinearLayoutManager(getContext()));
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myMoviesRef  = database.getReference(FirebaseReferences.MY_MOVIES);
+
+
        recyclerViewMovies.setLayoutManager(mLayoutManager);
         fillMovies();
 
@@ -89,7 +93,8 @@ public class MyMoviesFragment extends Fragment {
                String movieName = listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(v)).getNombre() ;
 
                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-               LayoutInflater inflater = MyMoviesFragment.this.getLayoutInflater();
+
+               final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
                builder.setView(mView)
                        .setTitle("Calificar "+ movieName)
@@ -102,7 +107,7 @@ public class MyMoviesFragment extends Fragment {
                                    if (calificationUser > 10){
                                        Toast.makeText(getContext(),"Calificación no valida",Toast.LENGTH_SHORT).show();
                                    }else {
-                                       Toast.makeText(getContext(),"Calificación de: "+calificationUser,Toast.LENGTH_SHORT).show();
+                                      // myMoviesRef.child(FirebaseReferences.USERS).child(currentUser.getUid()).child("MiLista" ).push().setValue(calificationUser);
                                    }
                                }else{
                                    Toast.makeText(getContext(),"Cadena vacia",Toast.LENGTH_SHORT).show();
@@ -180,9 +185,6 @@ public class MyMoviesFragment extends Fragment {
 
            }
        });
-
-
-
         //Se rellena con esto si se quieren hacer pruebas
        /* listMyMovies.add(new MyMovies("IronMan 2","Sigue mejorando su traje",R.mipmap.ic_launcher));
         listMyMovies.add(new MyMovies("Thor","No es digno y lo mandan a la tierra",R.mipmap.ic_launcher));
