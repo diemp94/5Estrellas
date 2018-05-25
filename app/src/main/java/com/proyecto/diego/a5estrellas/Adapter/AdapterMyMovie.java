@@ -27,6 +27,7 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
 
     //FIREBASE
     FirebaseStorage mStorage; //Crea un objeto que hace referencia a la base de datos de FB
+
     //LISTA DE PELICULAS (SON OBJETOS)
     ArrayList<MyMovies> listMovies;
     ArrayList<MyMovies> listMoviesFiltered;
@@ -61,7 +62,7 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
     public void onBindViewHolder(AdapterMyMovie.ViewHolderMyMovie holder, int position) {
         holder.txtNameMyMovie.setText(listMoviesFiltered.get(position).getNombre());
         holder.txtInfoMyMovie.setText(listMoviesFiltered.get(position).getInfo());
-
+        holder.txtCalification.setText(listMoviesFiltered.get(position).getCalificacion().toString());
        //AGREGA LAS IMAGENES DESDE FIREBASE UTILIZANDO UNA URL
         mStorage = FirebaseStorage.getInstance(); //Instancias el objeto
         StorageReference urlstorage = mStorage.getReferenceFromUrl(listMoviesFiltered.get(position).getFoto()); //Obtiene la URL del objeto actual
@@ -109,7 +110,6 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
         TextView txtNameMyMovie, txtInfoMyMovie;
         ImageView fotoMyMovie;
         TextView txtCalification;
-        ImageButton btnDescripcion;
 
         public ViewHolderMyMovie(View itemView) {
             super(itemView);

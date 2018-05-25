@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,7 +33,7 @@ public class DescriptionActivity extends AppCompatActivity {
     //FIREBASE
     FirebaseStorage mStorage; //Crea un objeto que hace referencia a la base de datos de FB
     ImageView imageViewDescription;
-    TextView txtViewNameDescription, txtViewDescription, txtViewClasification;
+    TextView txtViewNameDescription, txtViewDescription, txtViewCalification;
     ImageButton imageButtonYT, btnAddToMyList;
     MyMovies mv;
     public ArrayList<MyMovies> listMyMoviesList;
@@ -56,6 +55,7 @@ public class DescriptionActivity extends AppCompatActivity {
         Glide.with(imageViewDescription.getContext()).using(new FirebaseImageLoader()).load(urlstorage).into(imageViewDescription);
         txtViewNameDescription.setText(mv.getNombre());
         txtViewDescription.setText(mv.getInfoDetalle());
+        txtViewCalification.setText(mv.getCalificacion().toString());
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myMoviesRef  = database.getReference(FirebaseReferences.MY_MOVIES);
@@ -104,10 +104,6 @@ public class DescriptionActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     MyMovies mvfill = snapshot.getValue(MyMovies.class);
                     listMyMoviesList.add(mvfill);
-                    //Log.i("mv ",mv.getNombre());
-                    //Log.i("mv fill",mvfill.getNombre());
-                    //Log.i("mv final", String.valueOf(mv.getNombre().equals(mvfill.getNombre())));
-                    //Log.i("mv final", String.valueOf(mv.getFoto().toString().matches(mvfill.getFoto().toString())));
                     if(mvfill.getFoto().equals(mv.getFoto())){
                         movieOnMyList = true;
                     }
@@ -125,7 +121,7 @@ public class DescriptionActivity extends AppCompatActivity {
         imageViewDescription = (ImageView) findViewById(R.id.imageViewDescription);
         txtViewNameDescription = (TextView) findViewById(R.id.textViewNameDescription);
         txtViewDescription = (TextView) findViewById(R.id.textViewDescription);
-        txtViewClasification = (TextView) findViewById(R.id.textViewCalification);
+        txtViewCalification = (TextView) findViewById(R.id.textViewCalification);
         btnAddToMyList = (ImageButton) findViewById(R.id.buttonDescripcionAgregarAMiLista);
         imageButtonYT = (ImageButton) findViewById(R.id.imageButtonYouTubeTrailer);
     }

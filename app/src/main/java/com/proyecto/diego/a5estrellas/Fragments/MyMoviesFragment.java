@@ -63,6 +63,7 @@ public class MyMoviesFragment extends Fragment {
         listMyMovies = new ArrayList<>();
         mLayoutManager = new LinearLayoutManager(getContext());
 
+        //ALERT DIALOG DE LA CALIFICACIÓN
         final View mView =inflater.inflate(R.layout.calificacion_dialog,null);
         editTextCalification = (EditText)  mView.findViewById(R.id.editTextCalification);
 

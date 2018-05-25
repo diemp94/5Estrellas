@@ -9,38 +9,13 @@
     android:paddingTop="5dp"
     >
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/cardVieMovies"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_news"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        card_view:cardBackgroundColor="#E2E2E2"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        card_view:cardCornerRadius="4dp"
+        android:layout_height="wrap_content"
         >
 
-        <ImageView
-            android:id="@+id/imageViewMovieFB"
-            android:layout_width="match_parent"
-            android:scaleType="centerCrop"
-            android:layout_height="200dp"
-
-            />
-
-        <TextView
-            android:id="@+id/textViewMovieName"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="5dp"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            />
-
-    </android.support.v7.widget.CardView>
+    </android.support.v7.widget.RecyclerView>
 
 
 
