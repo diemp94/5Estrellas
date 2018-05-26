@@ -55,7 +55,6 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
                                 txtViewLoginWarning.setText("Contraseña Incorrecta");
-                                //Toast.makeText(LoginActivity.this,"Usuario no registrado",Toast.LENGTH_LONG).show();
                             }
                         }
                     });
