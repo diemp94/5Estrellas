@@ -108,11 +108,13 @@ public class MyListFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 adapterMyMovieList.getFilter().filter(query);
+                listMyMoviesList = adapterMyMovieList.getListMoviesFiltered();
                 return false;
             }
             @Override
             public boolean onQueryTextChange(String newText) {
                 adapterMyMovieList.getFilter().filter(newText);
+                listMyMoviesList = adapterMyMovieList.getListMoviesFiltered();
                 return false;
             }
         });
