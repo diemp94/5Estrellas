@@ -91,6 +91,8 @@ public class MyMoviesFragment extends Fragment {
            public void OnItemLongCLick(View v, int position) {
 
                // ALERT DIALOG
+               //Log.i("LARGO",""+listMyMovies.size());
+               //Log.i("LARGO",""+ adapterMyMovie.getListMoviesFiltered().size());
                String movieName = listMyMovies.get(recyclerViewMovies.getChildAdapterPosition(v)).getNombre() ;
 
                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -149,16 +151,18 @@ public class MyMoviesFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 adapterMyMovie.getFilter().filter(query);
+                //Actualiza la lista para obtener las nuevas posiciones sin esto, se actualiza la vista pero no las posiciones y redirecciona mal las peliculas
+                listMyMovies = adapterMyMovie.getListMoviesFiltered();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
                 adapterMyMovie.getFilter().filter(newText);
+                listMyMovies = adapterMyMovie.getListMoviesFiltered(); 
                 return false;
             }
         });
-
         super.onCreateOptionsMenu(menu, inflater);
     }
 

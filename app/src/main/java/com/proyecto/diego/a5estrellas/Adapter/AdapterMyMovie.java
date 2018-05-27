@@ -157,4 +157,8 @@ public class AdapterMyMovie extends RecyclerView.Adapter<AdapterMyMovie.ViewHold
             }
         };
     }
+
+    public ArrayList<MyMovies> getListMoviesFiltered() {
+        return listMoviesFiltered;
+    }
 }
